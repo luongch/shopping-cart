@@ -1,14 +1,15 @@
 function Item(props) {
+  let {title, price, src, alt} = props
   return (
     <div>
       <div>
-        {/* image */}
+        <img src={src} alt={alt} width="300px"/>
       </div>
       <div>
-        {/* title */}
+        <div>{title}</div>
       </div>
       <div>
-        {/* price */}
+        <div>${price}</div>
       </div>
     </div>
   );
