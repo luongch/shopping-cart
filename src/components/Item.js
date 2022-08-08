@@ -1,7 +1,7 @@
 function Item(props) {
   let {title, price, src, alt} = props
   return (
-    <div>
+    <div className="item">
       <div>
         <img src={src} alt={alt} width="300px"/>
       </div>

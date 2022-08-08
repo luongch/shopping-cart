@@ -1,6 +1,7 @@
 import Nav from "./Nav";
 import Inventory from "../fixtures/inventory";
 import Item from "./Item";
+import '../styles/shop.css'
 
 function Shop() {
     const imgFolder = require.context('../images', false)
@@ -18,9 +19,11 @@ function Shop() {
     return (
       <div>
         <Nav></Nav>
-        {
-          getInventory()
-        }
+        <div className="shop">
+          {
+            getInventory()
+          }
+        </div>        
       </div>
     );
   }
