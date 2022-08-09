@@ -1,5 +1,5 @@
 import Nav from "./Nav";
-function Home() {
+function Home(props) {
   return (
     <div>
       <Nav></Nav>

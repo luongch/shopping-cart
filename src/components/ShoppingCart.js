@@ -1,5 +1,6 @@
 import Nav from "./Nav";
-function ShoppingCart() {
+function ShoppingCart(props) {
+  console.log(props.count)
     return (
       <div>
         <Nav></Nav>

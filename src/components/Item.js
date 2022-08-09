@@ -1,18 +1,20 @@
 import '../styles/shop.css'
+import uniqid from "uniqid"
 
 function Item(props) {
-  let {title, price, src, alt} = props
+  let {title, price, src, alt, myKey} = props
   
   const generateQuantity = () => {
     let options = []
     for(let index = 1; index <= 10; index++) {    
-      options.push(<option value={index}>{index}</option>)
+      let myKey = uniqid();
+      options.push(<option key={myKey} value={index}>{index}</option>)
       
     }
     return options;
   }
   return (
-    <div className="item">
+    <div className="item" key={myKey}>
       <div>
         <img src={src} alt={alt} width="300px"/>
       </div>
@@ -29,6 +31,7 @@ function Item(props) {
             generateQuantity()
           }
         </select>
+        <button type="button">Add to Cart</button>
       </form>
     </div>
   );
