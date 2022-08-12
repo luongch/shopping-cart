@@ -1,10 +1,10 @@
 import CartItem from "./CartItem";
 function ShoppingCart(props) {
-  let {cart} = props
+  let {cart, removeFromCart, incrementQuantity, decrementQuantity} = props
   const displayCart = () => {
     let temp = [];
     cart.forEach((value,key) => {
-      temp.push(<CartItem item={value}></CartItem>)
+      temp.push(<CartItem item={value} removeFromCart={removeFromCart} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}></CartItem>)
     });
     return temp;
   }

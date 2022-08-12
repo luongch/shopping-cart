@@ -4,10 +4,7 @@ import { useEffect } from "react";
 
 function Nav(props) {
   let {cart} = props;
-  console.log("cart in nav", cart)
-  useEffect(()=>{
-    console.log("nav bar: cart has been updated")
-  },[cart]);
+
     return (
       <div>
         <nav>

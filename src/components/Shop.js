@@ -5,10 +5,10 @@ import uniqid from "uniqid"
 
 
 function Shop(props) {
-  // debugger
   let getInventory = () => {    
-    return Inventory.map(item => {      let myKey = uniqid();
-      return <Item item={item}  key={myKey} addToCart={props.addToCart}></Item>
+    return Inventory.map(item => {      
+      let myKey = uniqid();
+      return <Item item={item} key={myKey} addToCart={props.addToCart}></Item>
     });
   }
   return (

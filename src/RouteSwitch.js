@@ -6,18 +6,14 @@ import ShoppingCart from "./components/ShoppingCart";
 import Nav from "./components/Nav";
 const RouteSwitch = () => {
   const [cart, setCart] = useState(new Map())
-  useEffect(()=>{
-    console.log("routerswitch: cart has been updated")
-  },[]);
+
   const removeFromCart = (item) => {
     let newCart = createNewCart();
-    newCart.delete(item)
+    newCart.delete(item.title)
     setCart(newCart);
   }
   const addToCart = (item) => {
-    // debugger
     let selected = document.getElementById(item.title);
-    // // let name = item.querySelector('.title').innerText
     let quantity = parseInt(selected.querySelector('#quantity').value)
     let newCart = createNewCart();
 
@@ -26,22 +22,25 @@ const RouteSwitch = () => {
 
     newCart.set(item.title, temp);
     setCart(newCart);
-    console.log(cart)
   }
   const incrementQuantity = (item) => {
     let newCart = createNewCart();
-    let newQuantity = newCart.get(item) + 1;
-    newCart.set(item, newQuantity);
+    let temp = {...item}
+    temp.quantity = temp.quantity+1
+    
+    newCart.set(item.title, temp);
     setCart(newCart);
   }
   const decrementQuantity = (item) => {
     let newCart = createNewCart();
-    let newQuantity = newCart.get(item) - 1;
-    if (newQuantity == 0) {
-      newCart.delete(item)
+    let temp = {...item}
+    temp.quantity = temp.quantity-1
+
+    if (temp.quantity == 0) {
+      newCart.delete(item.title)
     }
     else {
-      newCart.set(item, newQuantity);
+      newCart.set(item.title, temp);
     }
     setCart(newCart);
   }
