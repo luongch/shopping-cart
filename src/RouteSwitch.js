@@ -12,22 +12,28 @@ const RouteSwitch = () => {
     newCart.delete(item.title)
     setCart(newCart);
   }
+
   const addToCart = (item) => {
     let selected = document.getElementById(item.title);
     let quantity = parseInt(selected.querySelector('#quantity').value)
-    let newCart = createNewCart();
+    if(cart.get(item.title)) {
+      incrementQuantity(cart.get(item.title), quantity)
+    }
+    else {
+      let newCart = createNewCart();
 
-    let temp = {...item}
-    temp.quantity = quantity
+      let temp = {...item}
+      temp.quantity = quantity
 
-    newCart.set(item.title, temp);
-    setCart(newCart);
+      newCart.set(item.title, temp);
+      setCart(newCart);
+    }
   }
-  const incrementQuantity = (item) => {
+  const incrementQuantity = (item, quantity) => {
     let newCart = createNewCart();
     let temp = {...item}
-    temp.quantity = temp.quantity+1
-    
+    temp.quantity = temp.quantity+quantity
+
     newCart.set(item.title, temp);
     setCart(newCart);
   }
@@ -44,6 +50,8 @@ const RouteSwitch = () => {
     }
     setCart(newCart);
   }
+
+  /**React won't update the state if you pass by reference so a new object must be created */
   const createNewCart = () => {
     let newCart = new Map();
     cart.forEach((value,key) => {

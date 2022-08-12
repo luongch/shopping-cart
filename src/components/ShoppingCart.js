@@ -8,9 +8,18 @@ function ShoppingCart(props) {
     });
     return temp;
   }
+
+  const calculateTotal = () => {
+    let total = 0;
+    cart.forEach((value,key)=>{
+      total += (value.quantity * value.price)
+    });
+    return <div>Total: ${total}</div>
+  }
     return (
       <div>
         {displayCart()}
+        {calculateTotal()}
       </div>
     );
   }

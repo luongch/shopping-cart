@@ -12,7 +12,7 @@ function CartItem(props) {
             <span>Quantity: </span>
             <span><button onClick={effect => {decrementQuantity(item)}}>-</button></span>
             <span>{item.quantity}</span>
-            <span><button onClick={effect => {incrementQuantity(item)}}>+</button></span>
+            <span><button onClick={effect => {incrementQuantity(item,1)}}>+</button></span>
         </div>
         <div>
             <button onClick={effect => {removeFromCart(item)}}>Remove</button>
