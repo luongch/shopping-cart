@@ -12,7 +12,7 @@ function Shop(props) {
     return Inventory.map(item => {
       const img = imgFolder(item.image.src)
       let myKey = uniqid();
-      return <Item title={item.title} price={item.price} src={img} alt={item.image.alt} key={myKey}></Item>
+      return <Item title={item.title} price={item.price} src={img} alt={item.image.alt} key={myKey} addToCart={props.addToCart}></Item>
     });
   }
   return (

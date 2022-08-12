@@ -14,11 +14,11 @@ function Item(props) {
     return options;
   }
   return (
-    <div className="item" key={myKey}>
+    <div className="item" key={myKey} id={title}>
       <div>
         <img src={src} alt={alt} width="300px"/>
       </div>
-      <div>
+      <div className='title'>
         <div>{title}</div>
       </div>
       <div>
@@ -31,10 +31,10 @@ function Item(props) {
             generateQuantity()
           }
         </select>
-        <button type="button">Add to Cart</button>
+        <button type="button" onClick={event => props.addToCart(title)}>Add to Cart</button>
       </form>
     </div>
   );
 }
-
+ 
 export default Item;
