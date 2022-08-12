@@ -1,4 +1,3 @@
-import Nav from "./Nav";
 function ShoppingCart(props) {
   let {cart} = props
   const displayCart = () => {
@@ -10,8 +9,6 @@ function ShoppingCart(props) {
   }
     return (
       <div>
-        <Nav></Nav>
-        <div>This is the shopping cart</div>
         {displayCart()}
       </div>
     );

@@ -1,4 +1,3 @@
-import Nav from "./Nav";
 import Inventory from "../fixtures/inventory";
 import Item from "./Item";
 import '../styles/shop.css'
@@ -17,7 +16,6 @@ function Shop(props) {
   }
   return (
     <div>
-      <Nav></Nav>
       <div className="shop">
         {
           getInventory()

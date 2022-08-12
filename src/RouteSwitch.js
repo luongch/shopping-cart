@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
 import ShoppingCart from "./components/ShoppingCart";
+import Nav from "./components/Nav";
 const RouteSwitch = () => {
   const [cart, setCart] = useState(new Map())
   // useEffect(()=>{
@@ -42,6 +43,7 @@ const RouteSwitch = () => {
 
   return (
     <BrowserRouter>
+      <Nav></Nav>
       <Routes>
         <Route path="/" element={<Home cart={cart}/>} />
         <Route path="/shop" element={<Shop addToCart={addToCart}/>} />
