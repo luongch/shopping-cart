@@ -3,7 +3,7 @@ function ShoppingCart(props) {
   let {cart} = props
   const displayCart = () => {
     let temp = [];
-    cart.map((value,key) => {
+    cart.forEach((value,key) => {
       temp.push(<CartItem item={value}></CartItem>)
     });
     return temp;
