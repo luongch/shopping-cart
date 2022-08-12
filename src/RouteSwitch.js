@@ -6,11 +6,11 @@ import ShoppingCart from "./components/ShoppingCart";
 import Nav from "./components/Nav";
 const RouteSwitch = () => {
   const [cart, setCart] = useState(new Map())
-  // useEffect(()=>{
-
-  // },[]);
+  useEffect(()=>{
+    console.log("routerswitch: cart has been updated")
+  },[]);
   const removeFromCart = (item) => {
-    let newCart = cart;
+    let newCart = createNewCart();
     newCart.delete(item)
     setCart(newCart);
   }
@@ -18,19 +18,19 @@ const RouteSwitch = () => {
     let item = document.getElementById(title);
     // let name = item.querySelector('.title').innerText
     let quantity = parseInt(item.querySelector('#quantity').value)
-    let newCart = cart;
+    let newCart = createNewCart();
     newCart.set(title, quantity);
     setCart(newCart);
     console.log(cart)
   }
   const incrementQuantity = (item) => {
-    let newCart = cart;
+    let newCart = createNewCart();
     let newQuantity = newCart.get(item) + 1;
     newCart.set(item, newQuantity);
     setCart(newCart);
   }
   const decrementQuantity = (item) => {
-    let newCart = cart;
+    let newCart = createNewCart();
     let newQuantity = newCart.get(item) - 1;
     if (newQuantity == 0) {
       newCart.delete(item)
@@ -40,10 +40,17 @@ const RouteSwitch = () => {
     }
     setCart(newCart);
   }
+  const createNewCart = () => {
+    let newCart = new Map();
+    cart.forEach((value,key) => {
+      newCart.set(key, value);
+    });
+    return newCart;
+  }
 
   return (
     <BrowserRouter>
-      <Nav></Nav>
+      <Nav cart={cart}></Nav>
       <Routes>
         <Route path="/" element={<Home cart={cart}/>} />
         <Route path="/shop" element={<Shop addToCart={addToCart}/>} />

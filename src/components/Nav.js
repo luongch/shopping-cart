@@ -1,6 +1,13 @@
 
 import { Link } from "react-router-dom";
-function Nav() {
+import { useEffect } from "react";
+
+function Nav(props) {
+  let {cart} = props;
+  console.log("cart in nav", cart)
+  useEffect(()=>{
+    console.log("nav bar: cart has been updated")
+  },[cart]);
     return (
       <div>
         <nav>
@@ -8,7 +15,7 @@ function Nav() {
             <Link to="/Shop">Shop</Link>
             <Link to="/ShoppingCart">
                 <span>
-                    <img src={require("../images/cart.png")} alt="Shopping Cart" />
+                    {cart.size}<img src={require("../images/cart.png")} alt="Shopping Cart" />
                 </span>
             </Link>
         </nav>
