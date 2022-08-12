@@ -5,13 +5,10 @@ import uniqid from "uniqid"
 
 
 function Shop(props) {
-  let getInventory = () => {
-    const imgFolder = require.context('../images', false)
-    
-    return Inventory.map(item => {
-      const img = imgFolder(item.image.src)
-      let myKey = uniqid();
-      return <Item title={item.title} price={item.price} src={img} alt={item.image.alt} key={myKey} addToCart={props.addToCart}></Item>
+  // debugger
+  let getInventory = () => {    
+    return Inventory.map(item => {      let myKey = uniqid();
+      return <Item item={item}  key={myKey} addToCart={props.addToCart}></Item>
     });
   }
   return (

@@ -14,12 +14,17 @@ const RouteSwitch = () => {
     newCart.delete(item)
     setCart(newCart);
   }
-  const addToCart = (title) => {
-    let item = document.getElementById(title);
-    // let name = item.querySelector('.title').innerText
-    let quantity = parseInt(item.querySelector('#quantity').value)
+  const addToCart = (item) => {
+    // debugger
+    let selected = document.getElementById(item.title);
+    // // let name = item.querySelector('.title').innerText
+    let quantity = parseInt(selected.querySelector('#quantity').value)
     let newCart = createNewCart();
-    newCart.set(title, quantity);
+
+    let temp = {...item}
+    temp.quantity = quantity
+
+    newCart.set(item.title, temp);
     setCart(newCart);
     console.log(cart)
   }

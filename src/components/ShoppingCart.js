@@ -1,9 +1,10 @@
+import CartItem from "./CartItem";
 function ShoppingCart(props) {
   let {cart} = props
   const displayCart = () => {
     let temp = [];
-    cart.forEach((value,key) => {
-      temp.push(<div>{key},{value}</div>)
+    cart.map((value,key) => {
+      temp.push(<CartItem item={value}></CartItem>)
     });
     return temp;
   }

@@ -2,8 +2,11 @@ import '../styles/shop.css'
 import uniqid from "uniqid"
 
 function Item(props) {
-  let {title, price, src, alt, myKey} = props
+  let {item, myKey} = props
   
+  const imgFolder = require.context('../images', false)
+  const img = imgFolder(item.image.src)
+
   const generateQuantity = () => {
     let options = []
     for(let index = 1; index <= 10; index++) {    
@@ -14,15 +17,15 @@ function Item(props) {
     return options;
   }
   return (
-    <div className="item" key={myKey} id={title}>
+    <div className="item" key={myKey} id={item.title}>
       <div>
-        <img src={src} alt={alt} width="300px"/>
+        <img src={img} alt={item.image.alt} width="300px"/>
       </div>
       <div className='title'>
-        <div>{title}</div>
+        <div>{item.title}</div>
       </div>
       <div>
-        <div>${price}</div>
+        <div>${item.price}</div>
       </div>
       <form action="">
         <label htmlFor="quantity">Quantity</label>
@@ -31,7 +34,7 @@ function Item(props) {
             generateQuantity()
           }
         </select>
-        <button type="button" onClick={event => props.addToCart(title)}>Add to Cart</button>
+        <button type="button" onClick={event => props.addToCart(item)}>Add to Cart</button>
       </form>
     </div>
   );
