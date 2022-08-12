@@ -25,6 +25,7 @@ function ShoppingCart(props) {
       <div>
         {displayCart()}
         {calculateTotal()}
+        <button>Check out</button>
       </div>
     );
   }
