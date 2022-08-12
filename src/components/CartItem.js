@@ -1,11 +1,12 @@
 
 function CartItem(props) {
-    let {item, removeFromCart, incrementQuantity,decrementQuantity} = props
+    /**although it is passed as key you can't access it with props.key */
+    let {myKey, item, removeFromCart, incrementQuantity,decrementQuantity} = props
     const imgFolder = require.context('../images', false)
     const img = imgFolder(item.image.src)
 
     return (
-      <div>
+      <div key={myKey} className="test">
         <img src={img} alt={item.image.alt} width="100px"/>
         <div>{item.title}</div>
         <div>

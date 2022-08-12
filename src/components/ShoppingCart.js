@@ -1,10 +1,15 @@
 import CartItem from "./CartItem";
+import uniqid from "uniqid"
+
 function ShoppingCart(props) {
   let {cart, removeFromCart, incrementQuantity, decrementQuantity} = props
   const displayCart = () => {
+    
     let temp = [];
-    cart.forEach((value,key) => {
-      temp.push(<CartItem item={value} removeFromCart={removeFromCart} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}></CartItem>)
+    cart.forEach((value) => {
+      let myKey = uniqid();
+
+      temp.push(<CartItem key={myKey} item={value} removeFromCart={removeFromCart} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}></CartItem>)
     });
     return temp;
   }
